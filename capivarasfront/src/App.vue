@@ -23,10 +23,10 @@
       <input
         type="text"
         v-model="searchTerm"
-        placeholder="lista capivaras..."
+        placeholder="Filtrar por nome"
         class="search-bar"
       />
-      <CapivaraList
+      <CapivaraCard
         :capivaras="filteredCapivaras"
         @edit-capivara="handleEditCapivara"
         @delete-capivara="fetchCapivaras"
@@ -40,24 +40,26 @@
 </template>
 
 <script>
-import CapivaraList from "./components/CapivaraList.vue";
+import CapivaraCard from "./components/CapivaraCard.vue";
 import CapivaraForm from "./components/CapivaraForm.vue";
 
 export default {
   name: "App",
   components: {
-    CapivaraList,
+    CapivaraCard,
     CapivaraForm,
   },
   data() {
     return {
       currentTab: "lista",
-      capivaras: [],
       capivaraToEdit: null, // Save Capibara to be edited
-      searchTerm: "",
+      searchTerm: ""
     };
   },
   computed: {
+    capivaras() {
+      return this.$store.state.capivaras; // Pegando as capivaras do Vuex store
+    },
     filteredCapivaras() {
       return this.capivaras.filter((capivara) =>
         capivara.nome.toLowerCase().includes(this.searchTerm.toLowerCase())
@@ -69,10 +71,10 @@ export default {
   },
   methods: {
     fetchCapivaras() {
-      fetch("http://localhost:3000/api/capivaras")
+      fetch(`${this.$apiUrl}/api/capivaras`)
         .then((response) => response.json())
         .then((data) => {
-          this.capivaras = data;
+          this.$store.commit('setCapivaras', data); // Using Vuex mutation to set capivaras
         })
         .catch((error) => console.error("Erro ao carregar capivaras:", error));
     },
@@ -81,7 +83,7 @@ export default {
       this.currentTab = "cadastro"; // Alter to register tab
     },
     abrirFormulario() {
-      this.capivaraToEdit = null; // clean form to add new Capibara
+      this.capivaraToEdit = null; // Clean form to add new Capibara
       this.currentTab = "cadastro";
     },
   },

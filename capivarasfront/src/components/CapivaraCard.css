@@ -19,14 +19,17 @@
   color: var(--text-color);
   word-wrap: break-word;
   word-break: break-word;
-  white-space: normal;
-  max-width: 600px;
-  margin: 20px auto;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  max-width: 350px;
+  box-sizing: border-box;
 }
 
 .capivara-card ul {
   text-align: left;
+}
+
+.capivara-card h2 {
+  white-space: normal;
 }
 
 .capivara-card:hover {

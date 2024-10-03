@@ -13,6 +13,7 @@
               class="form-control form-control-dark"
               v-model="capivaraLocal.nome"
               required
+              @keydown.enter.prevent="focusNext('idade')"
             />
           </div>
           <div class="mb-3">
@@ -22,6 +23,8 @@
               class="form-control form-control-dark"
               v-model="capivaraLocal.idade"
               required
+              ref="idade"
+              @keydown.enter.prevent="focusNext('peso')"
             />
           </div>
           <div class="mb-3">
@@ -31,6 +34,8 @@
               class="form-control form-control-dark"
               v-model="capivaraLocal.peso"
               required
+              ref="peso"
+              @keydown.enter.prevent="focusNext('statusSaude')"
             />
           </div>
           <div class="mb-3">
@@ -40,8 +45,10 @@
             <input
               type="text"
               class="form-control form-control-dark"
-              v-model="capivaraLocal.status_saude"
+              v-model="capivaraLocal.statusSaude"
               required
+              ref="statusSaude"
+              @keydown.enter.prevent="focusNext('habitat')"
             />
           </div>
           <div class="mb-3">
@@ -51,6 +58,8 @@
               class="form-control form-control-dark"
               v-model="capivaraLocal.habitat"
               required
+              ref="habitat"
+              @keydown.enter.prevent="focusNext('comportamento')"
             />
           </div>
           <div class="mb-3">
@@ -61,6 +70,8 @@
               type="text"
               class="form-control form-control-dark"
               v-model="capivaraLocal.comportamento"
+              ref="comportamento"
+              @keydown.enter.prevent="focusNext('dieta')"
             />
           </div>
           <div class="mb-3">
@@ -69,6 +80,8 @@
               type="text"
               class="form-control form-control-dark"
               v-model="capivaraLocal.dieta"
+              ref="dieta"
+              @keydown.enter.prevent="focusNext('observacoes')"
             />
           </div>
           <div class="mb-3">
@@ -79,6 +92,8 @@
               type="text"
               class="form-control form-control-dark"
               v-model="capivaraLocal.observacoes"
+              ref="observacoes"
+              @keydown.enter.prevent="adicionarOuEditarCapivara"
             />
           </div>
           <button type="submit" class="btn btn-success w-100">
@@ -99,7 +114,7 @@ export default {
         nome: "",
         idade: "",
         peso: "",
-        status_saude: "",
+        statusSaude: "",
         habitat: "",
       }),
     },
@@ -120,7 +135,7 @@ export default {
   methods: {
     adicionarOuEditarCapivara() {
       if (this.capivaraLocal.id) {
-        fetch(`http://localhost:3000/api/capivaras/${this.capivaraLocal.id}`, {
+        fetch(`${this.$apiUrl}/api/capivaras/${this.capivaraLocal.id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -135,7 +150,7 @@ export default {
             console.error("Erro ao atualizar capivara:", error)
           );
       } else {
-        fetch("http://localhost:3000/api/capivaras", {
+        fetch(`${this.$apiUrl}/api/capivaras`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -150,6 +165,13 @@ export default {
           .catch((error) =>
             console.error("Erro ao adicionar capivara:", error)
           );
+      }
+    },
+    //Focus on next field
+    focusNext(refName) {
+      const nextInput = this.$refs[refName];
+      if (nextInput) {
+        nextInput.focus();
       }
     },
   },
