@@ -1,25 +1,29 @@
 services:
   - type: web
-    name: capivaras-backend
-    env: node
     plan: free
-    buildCommand: "cd capivarasBack && npm install"
-    startCommand: "cd capivarasBack && npm start"
+    name: capivaras-backend
+    runtime: node
+    repo: https://github.com/pedrofbr0/CapivarasEstagio.git
+    rootDir: capivarasBack
+    buildCommand: "npm install"
+    startCommand: "npm start"
     envVars:
       - key: NODE_ENV
         value: production
     healthCheckPath: "/health"
     autoDeploy: true
     branch: main
-
   - type: web
-    name: capivaras-frontend
-    env: node
     plan: free
-    buildCommand: "cd capivarasfront && npm install && npm run build"
-    startCommand: "cd capivarasfront && npm run serve"
+    name: capivaras-frontend
+    runtime: node
+    repo: https://github.com/pedrofbr0/CapivarasEstagio.git
+    rootDir: capivarasfront
+    buildCommand: "npm install"
+    startCommand: "npm run serve"
     envVars:
       - key: NODE_ENV
         value: production
+    healthCheckPath: "/health"
     autoDeploy: true
     branch: main
