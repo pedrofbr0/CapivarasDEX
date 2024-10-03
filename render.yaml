@@ -7,9 +7,6 @@ services:
     rootDir: capivarasBack
     buildCommand: "npm install"
     startCommand: "npm start"
-    envVars:
-      - key: NODE_ENV
-        value: production
     autoDeploy: true
     branch: main
   - type: web
@@ -20,8 +17,5 @@ services:
     rootDir: capivarasfront
     buildCommand: "npm install"
     startCommand: "npm run build && npm run serve"
-    envVars:
-      - key: NODE_ENV
-        value: production
     autoDeploy: true
     branch: main
