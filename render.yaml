@@ -10,7 +10,6 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-    healthCheckPath: "/health"
     autoDeploy: true
     branch: main
   - type: web
@@ -20,10 +19,9 @@ services:
     repo: https://github.com/pedrofbr0/CapivarasEstagio.git
     rootDir: capivarasfront
     buildCommand: "npm install"
-    startCommand: "npm run serve"
+    startCommand: "npm run build && npm run serve"
     envVars:
       - key: NODE_ENV
         value: production
-    healthCheckPath: "/health"
     autoDeploy: true
     branch: main
