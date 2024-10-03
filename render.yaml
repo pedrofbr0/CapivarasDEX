@@ -1,0 +1,21 @@
+services:
+  - type: web
+    plan: free
+    name: capivaras-backend
+    runtime: node
+    repo: https://github.com/pedrofbr0/CapivarasEstagio.git
+    rootDir: capivarasBack
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    autoDeploy: true
+    branch: main
+  - type: web
+    plan: free
+    name: capivaras-frontend
+    runtime: node
+    repo: https://github.com/pedrofbr0/CapivarasEstagio.git
+    rootDir: capivarasfront
+    buildCommand: "npm install"
+    startCommand: "npm run build && npm run serve"
+    autoDeploy: true
+    branch: main
