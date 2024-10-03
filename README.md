@@ -22,6 +22,7 @@ Esta aplicação requer a instalação do Node.js na versão 18 para funcionar c
    
    - npm start
 <br>
+
 ### 2 Configuração do Frontend
 
 1. Navegue ate a pasta raiz do projeto frontend.
