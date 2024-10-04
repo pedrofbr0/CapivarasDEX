@@ -15,7 +15,7 @@ services:
     runtime: node
     repo: https://github.com/pedrofbr0/CapivarasEstagio.git
     rootDir: capivarasfront
-    buildCommand: "npm install"
+    buildCommand: "npm install --production=false"
     startCommand: "npm run build && npm run serve"
     autoDeploy: true
     branch: main
