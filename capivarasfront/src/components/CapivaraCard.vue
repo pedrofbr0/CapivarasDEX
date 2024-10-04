@@ -42,7 +42,7 @@ export default {
     deleteCapivara(id) {
       // Confirm deletion
       if (confirm("Tem certeza que deseja deletar esta capivara?")) {
-        fetch(`http://localhost:3000/api/capivaras/${id}`, {
+        fetch(`${this.$apiUrl}/api/capivaras/${id}`, {
           method: "DELETE",
         })
           .then((response) => response.json())
@@ -58,4 +58,4 @@ export default {
 };
 </script>
 
-<style scoped src="./CapivaraList.css"></style>
+<style scoped src="./CapivaraCard.css"></style>

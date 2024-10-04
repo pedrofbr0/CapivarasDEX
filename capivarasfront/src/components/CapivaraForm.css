@@ -6,12 +6,24 @@
 .form-control-dark {
   background-color: #333333;
   border: 1px solid #555555;
-  color: white;
+  color: #e0e0e0; 
 }
 
 .form-control-dark:focus {
   background-color: #444444;
   border-color: #888888;
+  color: #e0e0e0; 
+}
+
+input {
+  color: #e0e0e0;
+}
+
+input:focus {
+  color: #e0e0e0;
+  background-color: #333333;
+  border-color: #66afe9;
+  outline: none;
 }
 
 body {

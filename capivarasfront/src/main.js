@@ -2,8 +2,14 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import { createStore } from 'vuex';
 
+// Create Vue instance
 const app = createApp(App);
 
+// Defiining API URL as a global property
+const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:3000';
+app.config.globalProperties.$apiUrl = apiUrl;
+
+// Configure Vuex store
 const store = createStore({
   state: {
     capivaras: []
@@ -15,19 +21,11 @@ const store = createStore({
   }
 });
 
+// Using API to fetch capivaras
 app.use(store);
 
-// Moounting the app
+// Monunting App
 app.mount('#app');
 
-// Fetching the data when mounted
-app.mounted(() => {
-  fetch('http://localhost:3000/api/capivaras')
-    .then(response => response.json())
-    .then(data => {
-      store.commit('setCapivaras', data);
-    })
-    .catch(error => console.error('Erro ao carregar capivaras:', error));
-});
-
-export default store
+// Exporting store
+export default store;
