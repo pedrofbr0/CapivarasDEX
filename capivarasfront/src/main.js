@@ -5,6 +5,8 @@ import { createStore } from 'vuex';
 // Create Vue instance
 const app = createApp(App);
 
+console.log(process.env.NODE_ENV);
+console.log(process.env.VUE_APP_API_URL);
 // Defiining API URL as a global property
 const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:3000';
 app.config.globalProperties.$apiUrl = apiUrl;
