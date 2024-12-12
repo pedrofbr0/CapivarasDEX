@@ -1,51 +1,60 @@
-# CapivarasEstagio
+# CapivarasDEX: A Comprehensive Capybara Management Application
 
-Esta aplicação requer a instalação do Node.js na versão 18 para funcionar corretamente. Os projetos frontend e backend são executados de forma independente.
+**Overview**
 
-## Pré-requisitos
+CapivarasDEX is a full-stack application designed to manage and display information about capybaras. Built with Vue.js for the frontend and Node.js/Express for the backend, it provides a user-friendly interface for creating, reading, updating, and deleting capybara data.
 
-- Node.js (versão 18)
-- npm (gerenciador de pacotes do Node.js)
+**Key Features**
 
-## Passos para rodar a aplicação
+* **Intuitive User Interface:** A clean and modern design built with Vue.js.
+* **Robust Backend:** A Node.js/Express server handles data persistence using SQLite.
+* **Data Management:** Create, read, update, and delete capybara records.
+* **Cloud Deployment:** Hosted on Render for easy access.
+* **Docker Support:** Easily deploy using Docker Compose.
 
-### 1. Configuração do Backend
+**Getting Started**
 
-1. Navegue até a pasta raiz do projeto backend.
-   - cd capivarasBack
-<br>
-2. Execute o seguinte comando para instalar as dependências:
+**Prerequisites:**
 
-   - npm install
-<br>
-3. Execute o seguinte comando para iniciar o servidor:
+* Node.js (version 18)
+* npm (Node.js package manager)
+
+**Installation:**
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/pedrofbr0/CapivarasDEX.git](https://github.com/pedrofbr0/CapivarasDEX.git)
+   ```
+2. **Install dependencies:**
+   ```bash
+   cd capivarasBack
+   npm install
+   cd ../capivarasfront
+   npm install
+   ```
+
+**Running the application:**
+
+1. **Start the backend:**
+   ```bash
+   cd capivarasBack
+   npm start
+   ```
+
+
+2. **Start the frontend:**
+   ```bash
+   cd capivarasfront
+   npm run serve
+   ```
+
+**Alternatively:**
+
+If you have Docker installed:
+   ```bash
+   docker-compose up --build
+   ```
    
-   - npm start
-<br>
+Access the application: Open http://localhost:8080 in your web browser.
 
-### 2 Configuração do Frontend
-
-1. Navegue ate a pasta raiz do projeto frontend.
-    
-    - cd capivarasfront
-<br>
-2. Execute o seguinte comando para instalar as dependencias:
-
-    - npm install
-<br>
-3. Execute o seguinte comando para rodar o servidor na pasta do front:
-
-    - npm run serve
-<br>
-
-### 3 Iniciar o site
-
- 1. Acesse o link http://localhost:8080/ apos configurar o back e o front para ter acesso a pagina criada.
-
-### URL do projeto em nuvem
-:hammer: **EM CONSTRUÇAO** :hammer:
-https://capivaras-frontend.onrender.com
-
-### Observação
-E possivel rodar no **Docker** Utilizando o comando:
-    docker-compose up --build
+The application is deployed on Render. Visit https://capivaras-frontend.onrender.com.
